@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Syncify",
+  "version": "1",
+  "description": "An extension to join Syncify rooms, sync and control playback progress.",
+  "permissions": ["tabs", "scripting", "activeTab", "sidePanel", "storage"],
+  "host_permissions": [
+    "https://spotisyncrooms-default-rtdb.asia-southeast1.firebasedatabase.app/rooms/*",
+    "https://*.trycloudflare.com/",
+    "*://open.spotify.com/*",
+    "http://127.0.0.1:8000/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "ui/Syncify.html",
+    "default_width": 450,
+    "default_height": 360,
+    "default_title": "Click to open panel"
+  },
+  "side_panel": {
+    "default_path": "ui/Syncify.html",
+    "default_width": 550
+  }
+}

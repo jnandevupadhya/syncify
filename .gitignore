@@ -1,0 +1,53 @@
+**/node_modules/
+**/build/
+**/dist/
+**/release/
+
+# Node
+**/npm-debug.log
+**/.env
+**/.vscode
+**/coverage/
+**/yarn-error.log
+**/yarn-debug.log
+**/.yarn-integrity
+**/.pnpm-debug.log
+
+# React
+**/.pnp
+**/.pnp.js
+**/coverage/
+**/.next/
+**/out/
+
+# Python
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/.pytest_cache/
+**/.coverage
+**/htmlcov/
+
+# VSCode
+**/.vscode/*
+!**/.vscode/extensions.json
+!**/.vscode/launch.json
+!**/.vscode/tasks.json
+
+# OS
+.DS_Store
+Thumbs.db
+**/desktop.ini
+**/.directory
+
+# Virtual environments
+tkhelper
+**/bin/
+**/venv/
+**/.env
+**/.venv/
+**/env/
+**/ENV/
+**/room.json
+**/.host_key
+**/*.rar

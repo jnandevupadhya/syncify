@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../public/favicon.ico" type="image/x-icon" />
+
+    <meta charset="UTF-8" />
+    <title>Syncify - Access Denied</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+      .center-xy {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+      }
+
+      html,
+      body {
+        font-family: "Roboto Mono", monospace;
+        font-size: 16px;
+      }
+
+      html {
+        box-sizing: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      body {
+        background-color: #121212;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      .container {
+        width: 100%;
+      }
+
+      .copy-container {
+        text-align: center;
+      }
+
+      p {
+        color: #1db954;
+        font-size: 24px;
+        letter-spacing: 0.2px;
+        margin: 0;
+      }
+
+      .handle {
+        background: #1db954;
+        width: 14px;
+        height: 30px;
+        top: 0;
+        left: 0;
+        margin-top: 1px;
+        position: absolute;
+      }
+
+      #cb-replay {
+        fill: #1db954;
+        width: 20px;
+        margin: 15px;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        overflow: inherit;
+        cursor: pointer;
+      }
+      #cb-replay:hover {
+        fill: #1ed760;
+      }
+
+      .logo {
+        width: 100px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div
+        style="
+          position: absolute;
+          width: 100vw;
+          height: 100vh;
+          align-items: center;
+          display: flex;
+          justify-content: center;
+          top: 0;
+          left: 0;
+        "
+      >
+        <a
+          id="icon"
+          href="https://github.com/jnandevupadhya/Syncify.git"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Syncify"
+          class="button-class-styles"
+          style="position: relative; transform: translateY(-20vh);"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 180 180"
+            width="12vh"
+            height="12vh"
+          >
+            <path
+              d="M90 0C139.706 0 180 40.2944 180 90C180 139.706 139.706 180 90 180C40.2944 180 0 139.706 0 90C0 40.2944 40.2944 0 90 0ZM77.5107 116.683C75.3044 116.791 73.6015 118.668 73.707 120.874L75.5068 158.518C75.6124 160.724 77.4869 162.425 79.6934 162.317C81.8997 162.209 83.6024 160.333 83.4971 158.127L81.6973 120.483C81.5917 118.277 79.7172 116.575 77.5107 116.683ZM116.105 116.737C113.905 116.548 111.97 118.18 111.785 120.381L108.631 157.934C108.446 160.135 110.08 162.073 112.281 162.262C114.482 162.451 116.416 160.819 116.601 158.618L119.756 121.066C119.941 118.865 118.306 116.927 116.105 116.737ZM103.311 122.967C101.105 122.833 99.2119 124.513 99.0811 126.718L97.5928 151.798C97.4623 154.003 99.1439 155.898 101.349 156.032C103.554 156.166 105.447 154.487 105.578 152.282L107.066 127.202C107.197 124.997 105.515 123.101 103.311 122.967ZM70.042 130.82C69.8619 128.619 67.9309 126.983 65.7295 127.167C63.5282 127.351 61.8894 129.286 62.0693 131.487L63.4355 148.181C63.6158 150.382 65.5467 152.018 67.748 151.834C69.9492 151.65 71.5871 149.715 71.4072 147.514L70.042 130.82ZM90.4658 131.312C88.2567 131.313 86.4658 133.103 86.4658 135.312V143.688C86.4658 145.897 88.2567 147.687 90.4658 147.688C92.675 147.688 94.4658 145.897 94.4658 143.688V135.312C94.4658 133.103 92.675 131.312 90.4658 131.312ZM54.4697 131.323C52.2635 131.435 50.5635 133.314 50.6729 135.521L51.0879 143.885C51.1976 146.091 53.0742 147.789 55.2803 147.677C57.4864 147.565 59.1862 145.686 59.0771 143.479L58.6621 135.115C58.5526 132.909 56.6759 131.211 54.4697 131.323ZM126.795 131.346C124.595 131.141 122.65 132.759 122.451 134.959L121.696 143.299C121.497 145.499 123.12 147.449 125.319 147.653C127.519 147.858 129.463 146.24 129.662 144.04L130.417 135.7C130.616 133.5 128.994 131.55 126.795 131.346ZM89.5 23.083C64.4164 23.083 44.083 43.671 44.083 69.0635V93.8428L44.0879 94.7285C44.1015 97.4713 44.1966 99.5241 44.7324 101.363C45.3563 103.515 46.426 105.512 47.8711 107.224C49.3162 108.935 51.1047 110.325 53.1211 111.301C55.1966 112.304 57.6811 112.7 61.3008 113.281L61.8916 113.372C63.1767 113.576 64.2806 113.753 65.1934 113.844C66.1621 113.964 67.1435 113.938 68.1045 113.767C69.7131 113.441 71.2101 112.705 72.4512 111.631C73.6923 110.557 74.6359 109.181 75.1895 107.636C75.5346 106.678 75.6613 105.706 75.7158 104.738C75.7703 103.816 75.7705 102.685 75.7705 101.363V82.416C75.7705 80.486 75.7751 78.8235 75.3301 77.3975C74.841 75.8034 73.9429 74.365 72.7256 73.2256C71.5082 72.0862 70.0135 71.2849 68.3906 70.9023C66.9556 70.5708 65.3204 70.703 63.4131 70.8574L62.9902 70.8887L62.4902 70.9297C58.9345 71.2158 56.496 71.4116 54.4297 72.1836C52.9764 72.7241 51.6316 73.4735 50.4189 74.3955V69.0635C50.4189 47.2135 67.918 29.501 89.5 29.501C111.082 29.501 128.581 47.2135 128.581 69.0635V74.3955C127.368 73.4735 126.024 72.7286 124.57 72.1836C122.504 71.4071 120.065 71.2161 116.51 70.9346L116.01 70.8887L115.587 70.8574C113.684 70.703 112.044 70.5708 110.609 70.9023C108.986 71.2849 107.492 72.0862 106.274 73.2256C105.057 74.3649 104.159 75.8034 103.67 77.3975C103.229 78.8235 103.229 80.486 103.229 82.416V101.368C103.229 102.685 103.23 103.812 103.284 104.738C103.317 105.726 103.494 106.703 103.811 107.64C104.364 109.185 105.309 110.563 106.551 111.637C107.793 112.711 109.291 113.446 110.9 113.771C111.89 113.967 112.858 113.935 113.807 113.844C114.911 113.715 116.013 113.556 117.108 113.367L117.699 113.276C121.319 112.7 123.799 112.305 125.879 111.306C127.895 110.33 129.684 108.94 131.129 107.229C132.574 105.517 133.644 103.52 134.268 101.368C134.917 99.1337 134.917 96.5855 134.917 92.875V69.0635C134.917 43.671 114.584 23.083 89.5 23.083ZM92.2891 70.7334C91.9673 70.2047 91.5141 69.7496 90.9326 69.4404C89.172 68.5043 86.9881 69.1722 86.0518 70.9326C85.1156 72.6933 85.7832 74.8783 87.5439 75.8145C89.3046 76.7504 91.4887 76.0819 92.4248 74.3213L98.3555 63.168L96.7617 62.3203L92.2891 70.7334ZM91.4561 61.4736C89.6954 60.5376 87.5114 61.2052 86.5752 62.9658L80.6445 74.1201L82.2383 74.9668L86.7109 66.5537C87.0327 67.0824 87.4859 67.5374 88.0674 67.8467C89.8281 68.7829 92.0121 68.1152 92.9482 66.3545C93.8844 64.5938 93.2168 62.4098 91.4561 61.4736Z"
+              style="fill: rgb(205, 145, 237)"
+              id="object-0"
+              transform="matrix(1, 0, 0, 1, -1.4210854715202004e-14, 0)"
+            />
+          </svg>
+        </a>
+      </div>
+      <div class="copy-container center-xy">
+        <p>This page is only accessible to Syncify hosts</p>
+        <span class="handle"></span>
+      </div>
+    </div>
+
+    <svg
+      version="1.1"
+      id="cb-replay"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      x="0px"
+      y="0px"
+      viewBox="0 0 279.9 297.3"
+      style="enable-background: new 0 0 279.9 297.3"
+      xml:space="preserve"
+    >
+      <g>
+        <path
+          d="M269.4,162.6c-2.7,66.5-55.6,120.1-121.8,123.9c-77,4.4-141.3-60-136.8-136.9C14.7,81.7,71,27.8,140,27.8
+		c1.8,0,3.5,0,5.3,0.1c0.3,0,0.5,0.2,0.5,0.5v15c0,1.5,1.6,2.4,2.9,1.7l35.9-20.7c1.3-0.7,1.3-2.6,0-3.3L148.6,0.3
+		c-1.3-0.7-2.9,0.2-2.9,1.7v15c0,0.3-0.2,0.5-0.5,0.5c-1.7-0.1-3.5-0.1-5.2-0.1C63.3,17.3,1,78.9,0,155.4
+		C-1,233.8,63.4,298.3,141.9,297.3c74.6-1,135.1-60.2,138-134.3c0.1-3-2.3-5.4-5.3-5.4l0,0C271.8,157.6,269.5,159.8,269.4,162.6z"
+        />
+      </g>
+    </svg>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script>
+      var $copyContainer = $(".copy-container"),
+        $replayIcon = $("#cb-replay"),
+        $copyWidth = $(".copy-container").find("p").width();
+
+      var mySplitText = new SplitText($copyContainer, { type: "words" }),
+        splitTextTimeline = new gsap.timeline();
+      var handleTL = new gsap.timeline();
+
+      var tl = new gsap.timeline();
+
+      tl.add(function () {
+        animateCopy();
+        blinkHandle();
+      }, 0.2);
+
+      function animateCopy() {
+        mySplitText.split({ type: "chars, words" });
+        splitTextTimeline.staggerFrom(
+          mySplitText.chars,
+          0.001,
+          {
+            autoAlpha: 0,
+            ease: Back.easeInOut.config(1.7),
+            onComplete: function () {
+              animateHandle();
+            },
+          },
+          0.05
+        );
+      }
+
+      function blinkHandle() {
+        handleTL.fromTo(
+          ".handle",
+          0.4,
+          { autoAlpha: 0 },
+          { autoAlpha: 1, repeat: -1, yoyo: true },
+          0
+        );
+      }
+
+      function animateHandle() {
+        handleTL.to(
+          ".handle",
+          0.7,
+          { x: $copyWidth, ease: SteppedEase.config(12) },
+          0.05
+        );
+      }
+
+      $("#cb-replay").on("click", function () {
+        splitTextTimeline.restart();
+        handleTL.restart();
+      });
+    </script>
+  </body>
+</html>
