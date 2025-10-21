@@ -17,6 +17,7 @@ So here it is. 💚
 ---
 
 ##  What It Does
+<p align="center">
 
 <p align="center">
   <a href="https://youtu.be/Z6HunrFj6-w">

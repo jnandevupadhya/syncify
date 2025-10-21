@@ -177,7 +177,7 @@ def monitor_tunnel(room_id, url, check_interval=5, max_retries=10):
 
     while True:
         try:
-            resp = requests.get(f"{url}/api/ping", timeout=2)
+            resp = requests.get(f"{url}/api/ping", timeout=10)
             if resp.status_code == 200:
                 time.sleep(check_interval)
             else:
@@ -210,6 +210,7 @@ def restart_tunnel(room_id, old_url):
         print(f"[Tunnel] Tunnel restarted, new URL: {new_url}")
         # Update room.json with new URL
         try:
+            register_room_in_firebase(room_id, new_url)
             with open(ROOM_FILE, "w") as f:
                 json.dump({"room_id": room_id, "url": new_url}, f)
         except Exception as e:
@@ -221,7 +222,7 @@ def restart_tunnel(room_id, old_url):
 
 
 # ---------------- Updated start_tunnel ----------------
-def start_tunnel(port=PORT, max_retries=10, retry_delay=5):
+def start_tunnel(port=PORT, max_retries=20, retry_delay=5):
     cached = load_cached_room()
     if cached:
         room_id = cached['room_id']
@@ -232,7 +233,7 @@ def start_tunnel(port=PORT, max_retries=10, retry_delay=5):
 
         if fb_data:
             try:
-                resp = requests.get(f"{fb_data['url']}/api/ping", timeout=2)
+                resp = requests.get(f"{fb_data['url']}/api/ping", timeout=5)
                 if resp.status_code == 200:
                     print(f"⚠️ Room ID {room_id} is already active, generating new ID...")
                     cached = None

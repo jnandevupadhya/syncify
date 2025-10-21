@@ -619,7 +619,7 @@ async function syncTrack(clientProgressPercent = 0) {
     //   `Server progress: ${serverProgressSec}s, Client progress: ${clientProgressSec}s`
     // );
 
-    ping = firstSeek ? ping + 1500 : ping + 1200; // add extra buffer for first seek
+    ping = firstSeek ? ping + 1500 : ping + 300; // add extra buffer for first seek
     if (
       tab &&
       Math.abs(serverProgressSec - clientProgressSec) > 3 &&
@@ -954,6 +954,7 @@ chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
     openedTrack = true;
 
     // Start async sync loop
+    roomInitialized = true;
     startSyncLoop();
 
     if (logging) console.log("Main Sync started.");
@@ -970,7 +971,7 @@ chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
 
 // ---------------- Async sync loop -----------------
 async function startSyncLoop() {
-  while (!spotifyTabClosed) {
+  while (!spotifyTabClosed && roomInitialized) {
     const start = Date.now();
 
     await syncTrack(clientProgress);
