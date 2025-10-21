@@ -18,7 +18,8 @@ So here it is. 💚
 
 ##  What It Does
 <p align="center">
-
+<b>WATCH</b>
+</p>
 <p align="center">
   <a href="https://youtu.be/Z6HunrFj6-w">
     <img src="https://img.youtube.com/vi/Z6HunrFj6-w/0.jpg" width="300" alt="Quick look">
