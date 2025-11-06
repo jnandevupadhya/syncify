@@ -29,7 +29,7 @@ Even if you don’t have a premium Spotify account, you can listen along with th
 
 1. [Download the extension](https://github.com/jnandevupadhya/test/releases/latest/download/extension.rar), right click on it and click on `extract to extension\`
 2. Open your browser (Brave-browser is highly recommended). 
-3. Go to `chrome://extensions` (or equivalent).  
+3. Type `chrome://extensions` in the search bar (or equivalent).  
 4. Enable **Developer mode**.  
 5. Click **Load unpacked** and select the extracted folder, or simply drag and drop the folder to the extension  page.  
 6. You should see the Syncify extension appear — click it, enter your nickname, room ID, and enjoy!  

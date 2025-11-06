@@ -4,6 +4,7 @@
   "version": "1",
   "description": "An extension to join Syncify rooms, sync and control playback progress.",
   "permissions": ["tabs", "scripting", "activeTab", "sidePanel", "storage"],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxPlfOapYu/Cf6Ry+Pny2jDyd/W4WEtKOYdM00uhMjEJ+Ye59HtEeIDyFSh6Uu+N0mTsMiILLN5758JVrlyls6+25ApuC3NPYVSmaui1usqFJDnSZ8z8/kMxQRt4kfvjyeVYIOUA2PIIF/QYonCMAXXaNEnfBWShgvujxI2hs/sykjvikyi0tBfmW99Q6SqWF/S11rpVBpCjb+byEe+sYM1ZPX3RZ4UjB1zSe4O1AsHCcLms/Yy2KOw7JMadAbpOcSPykOU5PmRwxuPm6pbz8pyGYQOG0zACMsWb013glLxBcV/+QwMNq3l2SCsUtW1NKac1+IjgNHbK/q7Mao0YT3wIDAQAB",
   "host_permissions": [
     "https://spotisyncrooms-default-rtdb.asia-southeast1.firebasedatabase.app/rooms/*",
     "https://*.trycloudflare.com/",

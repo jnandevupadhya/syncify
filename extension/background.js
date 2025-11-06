@@ -1,5 +1,5 @@
 // 🌍 Global variables — set once after user joins
-let logging = true;
+let logging = false; // set to true to enable background logging
 let username = null;
 let roomID = null;
 let userKey = null;
@@ -188,10 +188,10 @@ async function updateLastTrackData() {
     data = await res.json();
     if (lastTrackData?.isAllowed ?? false) roomInitialized = true;
 
-    if (data?.progress <= lastTrackData?.progress) {
-      data.progress = secToTimeStr(timeStrToSec(data.progress) + 1);
-      if (logging) console.log("slow fetch");
-    }
+    // if (data?.progress <= lastTrackData?.progress) {
+    //   data.progress = secToTimeStr(timeStrToSec(data.progress) + 1);
+    //   if (logging) console.log("slow fetch");
+    // }
     // if(logging) console.log(data);
     stopTime = Date.now();
     ping = stopTime - startTime + lastTrackData?.ping;
@@ -281,6 +281,14 @@ function checkSlowConnection(data) {
 
   // If progress hasn't advanced, start or maintain slow connection timer
   if (currentProgressSec <= prevProgressSec) {
+    lastTrackData.progress = secToTimeStr(prevProgressSec + 1); // simulate progress increment
+    if (logging)
+      console.log(
+        "[SlowConn] Simulated progress from",
+        secToTimeStr(currentProgressSec),
+        " to: ",
+        lastTrackData.progress
+      );
     if (!slowConnActive) {
       slowConnActive = true;
       slowConnTimer = setTimeout(() => {
