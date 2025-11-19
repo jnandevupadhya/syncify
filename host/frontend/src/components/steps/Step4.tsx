@@ -882,7 +882,7 @@ export const Step4 = () => {
                         title="Click to copy the extension link"
                         onClick={() => {
                           navigator.clipboard
-                            .writeText("https://github.com/jnandevupadhya/syncify/tree/main/extension")
+                            .writeText("https://github.com/jnandevupadhya/syncify/tree/main/extension#-syncify-extension--join-listening-sessions")
                             .then(() => {
                               toast({
                                 title: "Copied!",

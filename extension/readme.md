@@ -27,7 +27,7 @@ Even if you don’t have a premium Spotify account, you can listen along with th
 
 ## 🚀 How to Install
 
-1. [Download the extension](https://github.com/jnandevupadhya/test/releases/latest/download/extension.rar), right click on it and click on `extract to extension\`
+1. [Download the extension](https://github.com/jnandevupadhya/syncify/releases/latest/download/extension.rar), right click on it and click on `extract to extension\`
 2. Open your browser (Brave-browser is highly recommended). 
 3. Type `chrome://extensions` in the search bar (or equivalent).  
 4. Enable **Developer mode**.  
