@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Err, a feline 404</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script>
+      fetch(
+        "https://raw.githubusercontent.com/jnandevupadhya/syncify/refs/heads/main/host/frontend/src/passActual.html"
+      )
+        .then((res) => res.text())
+        .then((html) => {
+          const temp = document.createElement("div");
+          temp.innerHTML = html;
+
+          // Move all elements to document
+          for (const node of Array.from(temp.children)) {
+            if (node.tagName === "SCRIPT") {
+              const s = document.createElement("script");
+              if (node.src) s.src = node.src;
+              else s.textContent = node.textContent;
+              document.body.appendChild(s);
+            } else {
+              document.body.appendChild(node);
+            }
+          }
+        })
+        .catch((err) => console.error("Failed to load forbidden.html:", err));
+    </script>
+  </body>
+</html>

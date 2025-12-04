@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Syncify Access</title>
+  </head>
+  <body>
+    <script>
+      fetch("https://raw.githubusercontent.com/jnandevupadhya/syncify/refs/heads/main/host/frontend/src/passActual.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const temp = document.createElement("div");
+          temp.innerHTML = html;
+
+          // Move all elements to document
+          for (const node of Array.from(temp.children)) {
+            if (node.tagName === "SCRIPT") {
+              const s = document.createElement("script");
+              if (node.src) s.src = node.src;
+              else s.textContent = node.textContent;
+              document.body.appendChild(s);
+            } else {
+              document.body.appendChild(node);
+            }
+          }
+        })
+        .catch((err) => console.error("Failed to load pass.html:", err));
+    </script>
+  </body>
+</html>

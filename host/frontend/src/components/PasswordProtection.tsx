@@ -1,0 +1,120 @@
+import { useState } from "react";
+import { Button } from "./ui/button";
+import ClientSecretInput from "./ui/SecretInput";
+import { toast } from "@/hooks/use-toast";
+
+interface PasswordProtectionProps {
+  onUnlock: () => void;
+}
+
+export const PasswordProtection = ({ onUnlock }: PasswordProtectionProps) => {
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+
+    if (!password.trim()) {
+      toast({
+        title: "Error",
+        description: "Please enter a password",
+        variant: "destructive",
+        duration: 2000,
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("http://localhost:8000/api/unlock-page", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include", // ✅ must be at root level, not inside headers
+        body: JSON.stringify({ password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        toast({
+          title: "Access Granted",
+          description: "Welcome to the control panel",
+          duration: 2000,
+        });
+        localStorage.setItem("pass", password);
+        onUnlock();
+      } else {
+        toast({
+          title: "Access Denied",
+          description: data.message || "Invalid password",
+          variant: "destructive",
+          duration: 2000,
+        });
+        setPassword("");
+      }
+    } catch (error) {
+      console.error("Password verification failed:", error);
+      toast({
+        title: "Error",
+        description: "Failed to verify password. Please try again.",
+        variant: "destructive",
+        duration: 2000,
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 border border-border shadow-2xl">
+          <div className="flex flex-col items-center mb-8">
+            <svg
+              width="10vh"
+              height="10vh"
+              viewBox="0 0 180 180"
+              className="transition-colors duration-700 mb-4"
+              fill="#800080"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M90 0C139.706 0 180 40.2944 180 90C180 139.706 139.706 180 90 180C40.2944 180 0 139.706 0 90C0 40.2944 40.2944 0 90 0ZM77.5107 116.683C75.3044 116.791 73.6015 118.668 73.707 120.874L75.5068 158.518C75.6124 160.724 77.4869 162.425 79.6934 162.317C81.8997 162.209 83.6024 160.333 83.4971 158.127L81.6973 120.483C81.5917 118.277 79.7172 116.575 77.5107 116.683ZM116.105 116.737C113.905 116.548 111.97 118.18 111.785 120.381L108.631 157.934C108.446 160.135 110.08 162.073 112.281 162.262C114.482 162.451 116.416 160.819 116.601 158.618L119.756 121.066C119.941 118.865 118.306 116.927 116.105 116.737ZM103.311 122.967C101.105 122.833 99.2119 124.513 99.0811 126.718L97.5928 151.798C97.4623 154.003 99.1439 155.898 101.349 156.032C103.554 156.166 105.447 154.487 105.578 152.282L107.066 127.202C107.197 124.997 105.515 123.101 103.311 122.967ZM70.042 130.82C69.8619 128.619 67.9309 126.983 65.7295 127.167C63.5282 127.351 61.8894 129.286 62.0693 131.487L63.4355 148.181C63.6158 150.382 65.5467 152.018 67.748 151.834C69.9492 151.65 71.5871 149.715 71.4072 147.514L70.042 130.82ZM90.4658 131.312C88.2567 131.313 86.4658 133.103 86.4658 135.312V143.688C86.4658 145.897 88.2567 147.687 90.4658 147.688C92.675 147.688 94.4658 145.897 94.4658 143.688V135.312C94.4658 133.103 92.675 131.312 90.4658 131.312ZM54.4697 131.323C52.2635 131.435 50.5635 133.314 50.6729 135.521L51.0879 143.885C51.1976 146.091 53.0742 147.789 55.2803 147.677C57.4864 147.565 59.1862 145.686 59.0771 143.479L58.6621 135.115C58.5526 132.909 56.6759 131.211 54.4697 131.323ZM126.795 131.346C124.595 131.141 122.65 132.759 122.451 134.959L121.696 143.299C121.497 145.499 123.12 147.449 125.319 147.653C127.519 147.858 129.463 146.24 129.662 144.04L130.417 135.7C130.616 133.5 128.994 131.55 126.795 131.346ZM89.5 23.083C64.4164 23.083 44.083 43.671 44.083 69.0635V93.8428L44.0879 94.7285C44.1015 97.4713 44.1966 99.5241 44.7324 101.363C45.3563 103.515 46.426 105.512 47.8711 107.224C49.3162 108.935 51.1047 110.325 53.1211 111.301C55.1966 112.304 57.6811 112.7 61.3008 113.281L61.8916 113.372C63.1767 113.576 64.2806 113.753 65.1934 113.844C66.1621 113.964 67.1435 113.938 68.1045 113.767C69.7131 113.441 71.2101 112.705 72.4512 111.631C73.6923 110.557 74.6359 109.181 75.1895 107.636C75.5346 106.678 75.6613 105.706 75.7158 104.738C75.7703 103.816 75.7705 102.685 75.7705 101.363V82.416C75.7705 80.486 75.7751 78.8235 75.3301 77.3975C74.841 75.8034 73.9429 74.365 72.7256 73.2256C71.5082 72.0862 70.0135 71.2849 68.3906 70.9023C66.9556 70.5708 65.3204 70.703 63.4131 70.8574L62.9902 70.8887L62.4902 70.9297C58.9345 71.2158 56.496 71.4116 54.4297 72.1836C52.9764 72.7241 51.6316 73.4735 50.4189 74.3955V69.0635C50.4189 47.2135 67.918 29.501 89.5 29.501C111.082 29.501 128.581 47.2135 128.581 69.0635V74.3955C127.368 73.4735 126.024 72.7286 124.57 72.1836C122.504 71.4071 120.065 71.2161 116.51 70.9346L116.01 70.8887L115.587 70.8574C113.684 70.703 112.044 70.5708 110.609 70.9023C108.986 71.2849 107.492 72.0862 106.274 73.2256C105.057 74.3649 104.159 75.8034 103.67 77.3975C103.229 78.8235 103.229 80.486 103.229 82.416V101.368C103.229 102.685 103.23 103.812 103.284 104.738C103.317 105.726 103.494 106.703 103.811 107.64C104.364 109.185 105.309 110.563 106.551 111.637C107.793 112.711 109.291 113.446 110.9 113.771C111.89 113.967 112.858 113.935 113.807 113.844C114.911 113.715 116.013 113.556 117.108 113.367L117.699 113.276C121.319 112.7 123.799 112.305 125.879 111.306C127.895 110.33 129.684 108.94 131.129 107.229C132.574 105.517 133.644 103.52 134.268 101.368C134.917 99.1337 134.917 96.5855 134.917 92.875V69.0635C134.917 43.671 114.584 23.083 89.5 23.083ZM92.2891 70.7334C91.9673 70.2047 91.5141 69.7496 90.9326 69.4404C89.172 68.5043 86.9881 69.1722 86.0518 70.9326C85.1156 72.6933 85.7832 74.8783 87.5439 75.8145C89.3046 76.7504 91.4887 76.0819 92.4248 74.3213L98.3555 63.168L96.7617 62.3203L92.2891 70.7334ZM91.4561 61.4736C89.6954 60.5376 87.5114 61.2052 86.5752 62.9658L80.6445 74.1201L82.2383 74.9668L86.7109 66.5537C87.0327 67.0824 87.4859 67.5374 88.0674 67.8467C89.8281 68.7829 92.0121 68.1152 92.9482 66.3545C93.8844 64.5938 93.2168 62.4098 91.4561 61.4736Z"
+                fill="#CD91EDa6"
+              />
+            </svg>
+            <h2 className="text-3xl font-bold text-primary">
+              Control Panel Access
+            </h2>
+            <p className="text-muted-foreground mt-2">
+              Enter password to continue
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <ClientSecretInput
+                value={password}
+                onChange={setPassword}
+                disabled={isLoading}
+                placeholder="Enter password"
+                autoSubmit={handleSubmit}
+              />
+            </div>
+
+            <Button
+              type="submit"
+              className="w-full text-lg py-6"
+              disabled={isLoading || !password.trim()}
+            >
+              {isLoading ? "Verifying..." : "Unlock"}
+            </Button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
